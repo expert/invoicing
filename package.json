@@ -16,8 +16,10 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.0.3",
     "@nuxt/test-utils": "^3.14.4",
     "@testing-library/vue": "^8.1.0",
+    "@types/rosie": "^0.0.45",
     "@vue/test-utils": "^2.4.6",
     "happy-dom": "^15.7.4",
     "i": "^0.3.7",
