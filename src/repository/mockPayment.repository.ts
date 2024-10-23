@@ -10,13 +10,13 @@ export class MockPaymentsRepository implements IPaymentRepository {
     return Promise.resolve(mockInvoice)
   }
   update(data: Invoice): Promise<Invoice> {
-    throw new Error("Method not implemented.");
+    return Promise.resolve(data as unknown as Invoice)
   }
   delete(id: number): void {
     throw new Error("Method not implemented.");
   }
-  find(): Promise<Invoice[]> {
-    throw new Error("Method not implemented.");
+  find(limit: number, offset: number): Promise<Invoice[]> {
+    return Promise.resolve([])
   }
   findOne(id: number): Promise<Invoice> {
     throw new Error("Method not implemented.");

@@ -8,22 +8,20 @@ export class PaymentService {
   }
   async createInvoice(input: any): Promise<Invoice> {
     const data = await this._repository.create(input)
+    if (!data.id) {
+      throw new Error('Unable to create invoice')
+    }
     return data
-    // return {
-    //   id: 1,
-    //   description: 'asdf',
-    //   details: 'asdfasdf details',
-    //   discount: 10,
-    //   po: 34,
-    //   total: 1000,
-    //   vat: 23
-    // }
   }
-  updateInvoice(input: any) {
-
+  async updateInvoice(input: any) {
+    const data = await this._repository.update(input)
+    return data
   }
-  getInvoices(limit: number) {
+  
+  async getInvoices(limit: number, offset: number) {
+    const invoices = await this._repository.find(limit, offset)
 
+    return invoices
   }
 
   getInvoice(id: number) {
