@@ -13,7 +13,7 @@ export const useInvoiceStore = defineStore('invoice', {
     }
   },
   actions: {
-    async fetchInvoices(): Promise<void> {
+    async fetchInvoices(): Promise<boolean> {
       const { data, status, error, refresh, clear } = await useFetch('/api/payments', {
         onRequest({ request, options }) {
           // Set the request headers
@@ -34,10 +34,11 @@ export const useInvoiceStore = defineStore('invoice', {
       })
       if (error.value) {
         console.error("Failed to fetch invoices", error)
-        return
+        return false
       }
 
       this.populateInvoiceData(data)
+      return true
     },
     populateInvoiceData(data: Ref): void {
       // Ensure data is available and is an array
