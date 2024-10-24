@@ -1,4 +1,4 @@
-export type InvoiceCategoryType = 'bill' | 'request'
+export type InvoiceCategoryType = 'bill' | 'payment'
 export type ServiceType = {
   description: string,
   quantity: number,

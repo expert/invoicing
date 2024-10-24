@@ -1,9 +1,8 @@
 <template>
   <div>
-    <Welcome></Welcome>
-    <InvoiceList></InvoiceList>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+    <AppHeader />
+    <AppSidebar />
+    <NuxtPage />
   </div>
 </template>
 <script setup>

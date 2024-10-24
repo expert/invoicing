@@ -49,5 +49,13 @@ export const useInvoiceStore = defineStore('invoice', {
         console.error("Failed to populate invoices, no invoices")
       }
     }
+  },
+  getters: {
+    getBills(): InvoiceModel[] {
+      return this.invoiceList.filter((invoice: InvoiceModel) => invoice.category === 'bill')
+    },
+    getPayments(): InvoiceModel[] {
+      return this.invoiceList.filter((invoice: InvoiceModel) => invoice.category === 'payment')
+    },
   }
 })
