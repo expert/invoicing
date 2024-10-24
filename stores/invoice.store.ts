@@ -32,7 +32,7 @@ export const useInvoiceStore = defineStore('invoice', {
           // Handle the response errors
         }
       })
-      if (error) {
+      if (error.value) {
         console.error("Failed to fetch invoices", error)
         return
       }
@@ -51,8 +51,3 @@ export const useInvoiceStore = defineStore('invoice', {
     }
   }
 })
-
-interface InvoiceInfo {
-  description: string
-  total: number
-}
