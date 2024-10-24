@@ -1,12 +1,11 @@
-export default defineEventHandler((params) => {
+import { InvoiceModel } from "~/src/models/invoice.model"
+
+export default defineEventHandler(async (params) => {
   const query = getQuery(params)
   console.log('aa', query)
-  return [
-    {
-       id: 1,
-       name: 'hello111',
-       a: query.a,
-       b: 'test11'
-    }
-  ]
+
+  // You can use generics to define types
+  const result = await useStorage('test').getItem<InvoiceModel>('invoices')
+
+  return result
 })

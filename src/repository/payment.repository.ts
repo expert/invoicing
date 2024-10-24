@@ -1,20 +1,20 @@
 import type { IPaymentRepository } from "../interfaces/paymentRepository.interface";
-import type { Invoice } from "../models/invoice.model";
+import type { InvoiceModel } from "../models/invoice.model";
 
 export class PaymentRepository implements IPaymentRepository {
-  create(data: Invoice): Promise<Invoice> {
+  create(data: InvoiceModel): Promise<InvoiceModel> {
     throw new Error("Method not implemented.");
   }
-  update(data: Invoice): Promise<Invoice> {
+  update(data: InvoiceModel): Promise<InvoiceModel> {
     throw new Error("Method not implemented.");
   }
   delete(id: number): void {
     throw new Error("Method not implemented.");
   }
-  find(): Promise<Invoice[]> {
+  find(): Promise<InvoiceModel[]> {
     throw new Error("Method not implemented.");
   }
-  findOne(id: number): Promise<Invoice> {
+  findOne(id: number): Promise<InvoiceModel> {
     throw new Error("Method not implemented.");
   }
 }

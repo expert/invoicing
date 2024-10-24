@@ -1,24 +1,24 @@
 import type { IPaymentRepository } from "../interfaces/paymentRepository.interface";
-import type { Invoice } from "../models/invoice.model";
+import type { InvoiceModel } from "../models/invoice.model";
 
 export class MockPaymentsRepository implements IPaymentRepository {
-  create(data: Invoice): Promise<Invoice> {
+  create(data: InvoiceModel): Promise<InvoiceModel> {
     const mockInvoice = {
       ...data,
       id: 123
-    } as Invoice
+    } as InvoiceModel
     return Promise.resolve(mockInvoice)
   }
-  update(data: Invoice): Promise<Invoice> {
-    return Promise.resolve(data as unknown as Invoice)
+  update(data: InvoiceModel): Promise<InvoiceModel> {
+    return Promise.resolve(data as unknown as InvoiceModel)
   }
   delete(id: number): void {
     throw new Error("Method not implemented.");
   }
-  find(limit: number, offset: number): Promise<Invoice[]> {
+  find(limit: number, offset: number): Promise<InvoiceModel[]> {
     return Promise.resolve([])
   }
-  findOne(id: number): Promise<Invoice> {
+  findOne(id: number): Promise<InvoiceModel> {
     throw new Error("Method not implemented.");
   }
   

@@ -1,22 +1,14 @@
 // @vitest-environment node
-import { afterEach, beforeEach, describe, expect, test, vi, vitest } from "vitest";
+import { afterEach, beforeEach, describe, expect, test, vitest } from "vitest";
 import type { IPaymentRepository } from "~/src/interfaces/paymentRepository.interface";
 import { MockPaymentsRepository } from "~/src/repository/mockPayment.repository";
 import { PaymentService } from "../payment.service";
 import { faker } from "@faker-js/faker"
-import { Invoice } from "~/src/models/invoice.model";
+import { InvoiceModel } from "~/src/models/invoice.model";
 import { Factory } from "rosie"
+import { invoiceFactory } from "~/src/factories/invoiceFactory";
 
-const invoiceFactory = new Factory<Invoice>()
-  .attr("id", faker.number.int({min: 1, max: 1000}))
-  .attr("description", faker.commerce.productDescription())
-  .attr("details", faker.finance.iban())
-  .attr("discount", +faker.finance.amount({ min: 0, max: 10}) )
-  .attr("po", +faker.finance.amount({ min: 0, max: 100}) )
-  .attr("vat", +faker.finance.amount({ min: 0, max: 10}) )
-  .attr("total", +faker.finance.amount({ min: 0, max: 1000}) )
-
-  const mockProduct = (rest: any) => {
+const mockProduct = (rest: any) => {
   return {
     description: faker.commerce.productDescription(),
     details: faker.finance.iban(),
@@ -61,7 +53,7 @@ describe("paymentService", () => {
 
       vitest
         .spyOn(repository, 'create')
-        .mockImplementationOnce(() => Promise.resolve({} as Invoice))
+        .mockImplementationOnce(() => Promise.resolve({} as InvoiceModel))
       await expect(service.createInvoice(reqBody)).rejects.toThrow(
         "Unable to create invoice"
       )

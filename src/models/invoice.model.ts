@@ -1,4 +1,4 @@
-export class Invoice {
+export class InvoiceModel {
   constructor(
     public readonly id: number,
     public readonly description: string,

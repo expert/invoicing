@@ -1,6 +1,2 @@
-POST  http://192.168.100.14:3000/api/payments
+GET  http://192.168.100.14:3000/api/payments
 content-Type: application/json
-{
-  "a": "Alexei111"
-}
-
