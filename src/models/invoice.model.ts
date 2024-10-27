@@ -19,7 +19,7 @@ export class InvoiceModel {
     public readonly fromEmail: string,
     public readonly toName: string,
     public readonly toEmail: string,
-    public readonly services: ServiceType[],
+    public readonly services: ServiceType[] | never,
     public readonly details: string,
     public readonly discount: number,
     public readonly total: number,

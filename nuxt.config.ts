@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxt/test-utils/module',
+    '@unocss/nuxt',
     '@pinia/nuxt'
   ],
   nitro: {
@@ -17,5 +18,8 @@ export default defineNuxtConfig({
         base: './.data/db'
       }
     }
-  }
+  },
+  unocss: {
+    nuxtLayers: true,
+  },
 })

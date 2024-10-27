@@ -19,13 +19,13 @@
 </template>
 
 <script lang="ts" setup>
-import type { InvoiceModel } from '~/src/models/invoice.model';
+import type { InvoiceModel, ServiceType } from '~/src/models/invoice.model';
 
 type FieldType = {
   label: string,
   component: 'input' | 'select' | 'services',
   required: boolean,
-  value: string | number,
+  value: string | number | ServiceType[],
   options?: string[],
   name: keyof InvoiceModel,  // linked to the InvoiceModel
 }
@@ -77,7 +77,7 @@ const fields: Ref<FieldType[]> = ref([
   { label: 'Email Address', component: 'input', required: true, value: invoice.value.toEmail, name: 'toEmail' },
 
 
-  // { label: 'Services', component: 'services', required: true, value: invoice.value.services, name: 'services' },
+  { label: 'Services', component: 'services', required: true, value: invoice.value.services, name: 'services' },
 
 
   { label: 'Bank Details', component: 'input', required: true, value: invoice.value.details, name: 'details' },
