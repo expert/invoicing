@@ -27,6 +27,7 @@ export class InvoiceModel {
     public readonly isPaid: boolean, 
     public readonly createdAt: Date,
     public readonly createdBy: Date,
-    public readonly updatedAt: Date
+    public readonly updatedAt: Date,
+    public readonly paidAt: Date
   ) {}
 }

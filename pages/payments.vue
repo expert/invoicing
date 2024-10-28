@@ -1,6 +1,6 @@
 <template>
   <div>
-    <InvoiceDashboard />
+    <InvoiceDashboard :invoices="invoices.invoiceList" />
     <!-- Button to create a new invoice -->
     <button @click="createInvoice">Create</button>
 
@@ -15,6 +15,7 @@
 <script lang="ts" setup>
 import type {  Ref } from 'vue'
 // To track if modal should be open
+const invoices = useInvoiceStore()
 const showModal = ref(false)
 const currentInvoiceId: Ref<number | null> = ref(null)
 

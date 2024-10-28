@@ -13,7 +13,16 @@
 
     <div class="border border-gray-300 rounded p-4 mt-4 overflow-x-auto">
       <InvoiceActions />
-      <InvoiceList />
+      <InvoiceList :invoices="invoices" />
     </div>
   </section>
 </template>
+
+<script lang="ts" setup>
+import type { InvoiceModel } from '~/src/models/invoice.model';
+
+const props = defineProps<{
+  invoices: InvoiceModel[]
+}>()
+
+</script>
