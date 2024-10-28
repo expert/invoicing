@@ -1,6 +1,6 @@
 <template>
   <div>
-    <InvoiceList />
+    <InvoiceDashboard />
     <!-- Button to create a new invoice -->
     <button @click="createInvoice">Create</button>
 
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Ref, ref, watch } from 'vue'
+import type {  Ref } from 'vue'
 // To track if modal should be open
 const showModal = ref(false)
 const currentInvoiceId: Ref<number | null> = ref(null)
