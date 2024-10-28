@@ -5,7 +5,7 @@
     <button @click="createInvoice">Create</button>
 
     <!-- Edit button for invoice -->
-    <button @click="editInvoice(33)"">Edit</button>
+    <button @click="editInvoice(33)">Edit</button>
 
     <!-- Modal Component -->
     <InvoiceModal v-if="showModal" :invoiceId="currentInvoiceId" @close="closeModal" />
