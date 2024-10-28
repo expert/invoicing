@@ -10,8 +10,11 @@
     type="button" 
     @click="toggleSidebar()"
     ></button>
-    <h1>Header</h1>
-  </header>
+    <div class="flex">
+      <span class="i-ic-baseline-workspace-premium text-primary-blue-3 block h-5 w-5 mr-1 text-primary-blue"></span>
+      Top 100 Users
+    </div>
+  </header> 
 </template>
 <script lang="ts" setup>
 const stateStore = useUIStateStore()

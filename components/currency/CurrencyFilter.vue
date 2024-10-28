@@ -1,17 +1,24 @@
 <template>
   <div class="flex flex-wrap gap-2 mt-2">
-    <button v-for="currency in currencies" :key="currency" class="btn" :class="{ 'btn-primary': selectedCurrency === currency }" @click="selectCurrency(currency)">
+    <button
+      v-for="currency in currencies"
+      :key="currency"
+      class="btn"
+      :class="{ 'btn-primary': selectedCurrency === currency }"
+      @click="selectCurrency(currency)"
+    >
       {{ currency }}
     </button>
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue'
+const uiStore = useUIStateStore()
+const currencies = computed(() => uiStore.currencies);
 
-const currencies = ['MDL', 'USD', 'EUR', 'RON']
-const selectedCurrency = ref('EUR')
+const selectedCurrency = ref(uiStore.currencies[uiStore.currentCurrency]);
 
-function selectCurrency(currency) {
-  selectedCurrency.value = currency
+const selectCurrency = function(currency: string ) {
+  selectedCurrency.value = currency;
+  uiStore.setCurrency(currencies.value.indexOf(currency))
 }
 </script>
