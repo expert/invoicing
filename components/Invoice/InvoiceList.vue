@@ -1,37 +1,39 @@
 <template>
-  <div class="overflow-x-auto">
-    <table class="w-full text-left border-collapse mt-4">
-      <thead>
-        <tr class="bg-gray-800 text-white">
-          <th class="p-2">Invoice #</th>
-          <th class="p-2">Due Date</th>
-          <th class="p-2">Client</th>
-          <th class="p-2">Payment Date</th>
-          <th class="p-2">Invoice Value</th>
-          <th class="p-2">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(invoice, index) in invoices" :key="invoice.id" :class="{ 'bg-gray-100': index % 2 === 0 }" class="border-b">
-          <td class="p-2">{{ invoice.id }}</td>
-          <td class="p-2">{{ invoice.dueDate }}</td>
-          <td class="p-2">{{ invoice.client }}</td>
-          <td class="p-2">{{ invoice.paymentDate || '-' }}</td>
-          <td class="p-2">{{ invoice.value }}</td>
-          <td class="p-2"><span :class="invoice.isPaid ? 'text-green-500' : 'text-red-500'">{{ invoice.isPaid ? 'Paid' : 'Unpaid' }}</span></td>
-        </tr>
-      </tbody>
-    </table>
+   <!-- Invoice List Section -->
+   <div class="border rounded-md overflow-hidden shadow">
+    <!-- Invoice List Header -->
+    <div class="grid grid-cols-[50px_1fr_1fr_1fr_1fr_100px] bg-gray-200 p-3 font-semibold">
+      <span>#</span>
+      <span>Due Date</span>
+      <span>Client</span>
+      <span>Payment Date</span>
+      <span>Invoice Value</span>
+      <span>Status</span>
+    </div>
+
+    <!-- Invoice Items -->
+    <div
+      v-for="invoice in invoices"
+      :key="invoice.id"
+      class="grid grid-cols-[50px_1fr_1fr_1fr_1fr_100px] items-center p-3 border-b"
+    >
+      <input type="checkbox" class="form-checkbox" />
+      <span>{{ invoice.dueDate }}</span>
+      <span>{{ invoice.client }}</span>
+      <span>{{ invoice.paymentDate || '-' }}</span>
+      <span>{{ invoice.value }} {{ invoice.currency }}</span>
+      <span :class="invoice.status === 'Paid' ? 'text-green-500' : 'text-red-500'">
+        {{ invoice.status }}
+      </span>
+    </div>
   </div>
 
-  <div class="flex flex-col md:flex-row justify-between items-center mt-4">
-    <div class="text-sm mb-2 md:mb-0">Showing 1–20 of 100</div>
-    <select class="form-select w-24">
-      <option>10 / page</option>
-      <option selected>20 / page</option>
-      <option>50 / page</option>
-    </select>
-  </div>
+  <!-- Pagination Section -->
+  <!-- <div class="flex items-center justify-between mt-4">
+    <button class="btn-icon"><i class="i-mdi-chevron-left"></i></button>
+    <span>1 / page</span>
+    <button class="btn-icon"><i class="i-mdi-chevron-right"></i></button>
+  </div> -->
 </template>
 
 

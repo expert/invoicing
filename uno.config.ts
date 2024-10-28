@@ -1,5 +1,6 @@
 import presetIcons from '@unocss/preset-icons'
 import presetUno from '@unocss/preset-uno' // This provides the default utilities
+import presetWebFonts from '@unocss/preset-web-fonts'
 
 import config from './.nuxt/uno.config.mjs'
 
@@ -8,6 +9,27 @@ export default {
 
   presets: [
     presetUno(),
+    presetWebFonts({
+      provider: 'google', // default provider
+      fonts: {
+        // these will extend the default theme
+        sans: 'Onest',
+        mono: ['Fira Code', 'Fira Mono:400,700'],
+        // // custom ones
+        // lobster: 'Lobster',
+        // lato: [
+        //   {
+        //     name: 'Lato',
+        //     weights: ['400', '700'],
+        //     italic: true,
+        //   },
+        //   {
+        //     name: 'sans-serif',
+        //     provider: 'none',
+        //   },
+        // ],
+      },
+    }),
     presetIcons({
       // Configure your icons preset here if needed
       // e.g., scale: 1.2, collections: { custom: {} }
@@ -39,5 +61,10 @@ export default {
       md: '768px',
       lg: '1024px',
     },
+    extends: {
+      fontFamily: {
+        sans: ['Onest', 'sans-serif'],
+      },
+    }
   }
 }

@@ -1856,7 +1856,7 @@
     "@unocss/preset-wind" "0.63.6"
     "@unocss/rule-utils" "0.63.6"
 
-"@unocss/preset-web-fonts@0.63.6":
+"@unocss/preset-web-fonts@0.63.6", "@unocss/preset-web-fonts@^0.63.6":
   version "0.63.6"
   resolved "https://registry.yarnpkg.com/@unocss/preset-web-fonts/-/preset-web-fonts-0.63.6.tgz#e15308432b1d625d4eb5044c0743464d5cf6038b"
   integrity sha512-ko1aHDax0u5CQi1BXggv6uW5Vq/LQRWwzOxqBFTh1JlGHPZTw4CdVJkYnlpt3WEW+FPUzZYjhKmMmQY7KtOTng==
