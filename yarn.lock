@@ -1880,7 +1880,7 @@
     "@unocss/preset-mini" "0.63.6"
     "@unocss/rule-utils" "0.63.6"
 
-"@unocss/reset@0.63.6":
+"@unocss/reset@0.63.6", "@unocss/reset@^0.63.6":
   version "0.63.6"
   resolved "https://registry.yarnpkg.com/@unocss/reset/-/reset-0.63.6.tgz#8746c1d3fa514d76fb16e281bfba29a02c380c53"
   integrity sha512-gq73RSZj54MOloqrivkoMPXCqNG2WpIyBT1AYlF76uKxEEbUD41E8uBUhLSKs7gFgF01yQJLRaIuyN1yw09pbQ==

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.5",
+    "@unocss/reset": "^0.63.6",
     "nuxt": "^3.13.2",
     "pinia": "^2.2.4",
     "vue": "latest",
