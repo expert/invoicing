@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-xl mx-auto">
+  <div class="max-w-xl mx-auto col-span-2">
     <!-- Table Header -->
     <div class="grid grid-cols-5 gap-1 p-4 bg-gray-800 text-white rounded-t-md">
       <span class="col-span-2">Description of Goods and Services</span>
@@ -15,25 +15,25 @@
       <input
         v-model="service.description"
         placeholder="Service or Goods"
-        class="col-span-2 px-2 py-1 border rounded outline-none"
+        class="col-span-2 form-control"
       />
 
       <!-- Quantity -->
       <input
         v-model.number="service.quantity"
         type="number"
-        class="w-full px-2 py-1 text-center border rounded outline-none"
+        class="w-full  form-control text-center"
       />
 
       <!-- Price per unit -->
       <input
         v-model.number="service.price"
         type="number"
-        class="w-full px-2 py-1 text-center border rounded outline-none"
+        class="w-full  form-control text-center"
       />
 
       <!-- VAT -->
-      <select v-model="service.vat" class="w-full px-2 py-1 border rounded outline-none">
+      <select v-model="service.vat" class="w-full form-control">
         <option value="0">0%</option>
         <option value="5">5%</option>
         <option value="10">10%</option>

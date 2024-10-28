@@ -4,6 +4,7 @@
     :value="modelValue" 
     @input="updateValue($event.target.value)" 
     :required="required" 
+    class="form-control"
   />
 </template>
 

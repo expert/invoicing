@@ -1,9 +1,10 @@
 <template>
   <select 
+    class="form-control"
     :name="name" 
     :value="modelValue" 
-    @change="updateValue($event.target.value)" 
     :required="required"
+    @change="updateValue($event.target.value)" 
   >
     <option v-for="option in options" :key="option" :value="option">
       {{ option }}
