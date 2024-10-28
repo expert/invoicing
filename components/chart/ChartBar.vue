@@ -1,74 +1,94 @@
 <script setup lang="ts">
-import type { VChart } from '#components'
-const chart = ref<InstanceType<typeof VChart> | null>(null)
+import type { VChart } from "#components";
+const chart = ref<InstanceType<typeof VChart> | null>(null);
 
 const props = defineProps<{
-  data: ECOption
-}>()
+  options: ECOption;
+}>();
 
+// const months = [
+//   "Jan",
+//   "Feb",
+//   "Mar",
+//   "Apr",
+//   "May",
+//   "Jun",
+//   "Jul",
+//   "Aug",
+//   "Sep",
+//   "Oct",
+//   "Nov",
+//   "Dec"
+// ];
+// const paidData = [0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 0, 0]; // example data for paid invoices
+// const unpaidData = [0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0]; // example data for unpaid invoices
 
-function getData(): ECOption {
-  return {
-    animation: false,
-    tooltip: {
-      className: 'echarts-tooltip',
-    },
-    toolbox: {
-      show: false,
-      feature: {
-        dataZoom: {},
-        saveAsImage: {},
-      },
-    },
-    dataset: props.data.dataset,
-    // dataset: {
-    //   dimensions: ['Product', 'Unpaid', 'Paid', '2017'],
-    //   source: [
-    //     {
-    //       Product: 'Matcha Latte',
-    //       2015: random(),
-    //       2016: random(),
-    //       2017: random(),
-    //     },
-    //     {
-    //       Product: 'Milk Tea',
-    //       2015: random(),
-    //       2016: random(),
-    //       2017: random(),
-    //     },
-    //     {
-    //       Product: 'Cheese Cocoa',
-    //       2015: random(),
-    //       2016: random(),
-    //       2017: random(),
-    //     },
-    //     {
-    //       Product: 'Walnut Brownie',
-    //       2015: random(),
-    //       2016: random(),
-    //       2019: random(),
-    //     },
-    //   ],
-    // },
-    xAxis: { type: 'category' },
-    yAxis: {},
-    itemStyle: { borderRadius: 3 },
-    // Declare several bar series, each will be mapped
-    // to a column of dataset.source by default.
-    series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }],
-  }
-}
+// function getData(): ECOption {
+//   return {
+//     tooltip: {
+//       trigger: "axis",
+//       axisPointer: { type: "shadow" }
+//     },
+//     legend: {
+//       data: ["Paid", "Unpaid"],
+//       right: 10,
+//       bottom: 10
+//     },
+//     xAxis: {
+//       type: "category",
+//       data: months,
+//       axisLabel: {
+//         color: "#333",
+//         fontSize: 12
+//       }
+//     },
+//     yAxis: {
+//       type: "value",
+//       axisLabel: {
+//         color: "#333",
+//         fontSize: 12,
+//         formatter: "{value}"
+//       },
+//       splitLine: {
+//         lineStyle: {
+//           type: "dashed",
+//           color: "#ccc"
+//         }
+//       }
+//     },
+//     series: [
+//       {
+//         name: "Paid",
+//         type: "bar",
+//         data: paidData,
+//         barWidth: "30%",
+//         itemStyle: {
+//           color: "#4C6EF5"
+//         }
+//       },
+//       {
+//         name: "Unpaid",
+//         type: "bar",
+//         data: unpaidData,
+//         barWidth: "30%",
+//         itemStyle: {
+//           color: "#333"
+//         }
+//       }
+//     ]
+//   };
+// }
 
-const option = shallowRef(getData())
-function refreshData() {
-  option.value = getData()
-}
+const option = shallowRef(props.options);
+// function refreshData() {
+//   option.value = props.options;
+// }
 
 function hideToolbox() {
-  chart.value?.setOption({ toolbox: { show: false } })
+  chart.value?.setOption({ toolbox: { show: false } });
 }
 function showToolbox() {
-  chart.value?.setOption({ toolbox: { show: true } })
+  chart.value?.setOption({ toolbox: { show: true } });
 }
 </script>
 
