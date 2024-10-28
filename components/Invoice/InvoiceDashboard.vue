@@ -8,7 +8,7 @@
     </header>
 
     <CurrencyFilter />
-    <InvoiceSummary />
+    <InvoiceSummary :invoices="invoices" />
     <InvoiceFilters />
 
     <div class="border border-gray-300 rounded p-4 mt-4 overflow-x-auto">

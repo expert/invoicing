@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/test-utils/module',
     '@unocss/nuxt',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    'nuxt-echarts',
   ],
   nitro: {
     storage: {
@@ -22,4 +23,8 @@ export default defineNuxtConfig({
   unocss: {
     nuxtLayers: true,
   },
+  echarts: {
+    charts: ['BarChart', 'LineChart', 'PieChart'],
+    components: ['DatasetComponent', 'GridComponent', 'TooltipComponent', 'ToolboxComponent'],
+  }
 })
