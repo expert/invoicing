@@ -2,7 +2,10 @@
   <div>
     <AppHeader />
     <AppSidebar />
-    <NuxtPage />
+    <main class="w-calc[(100%-0px)] lg:w-[calc(100%-222px)] overflow-x-hidden relative ml-auto min-h-screen py-16 transition-all">
+      <NuxtPage />
+    </main>
+    <AppFooter />
   </div>
 </template>
 <script setup>

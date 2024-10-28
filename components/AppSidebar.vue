@@ -1,12 +1,19 @@
 <template>
-  <div>
-    <h1>Sidebar</h1>
-    <nav>
-      <NuxtLink to="/">Dashboard</NuxtLink>
-      <NuxtLink to="/invoices">Invoices</NuxtLink>
-      <NuxtLink to="/payments">Payments</NuxtLink>
+  <aside class="bg-primary-light alg:top-10 fixed left-0 top-0 z-30 h-full transition-all w-a0px lg:w-[222px]">
+    <div class="lg:pb-50 h-full overflow-y-auto pb-12 pt-6">
+    <NuxtLink to="/" class="flex items-center  no-underline p-4">
+      <img
+        src="@/assets/images/logo.svg"
+        alt="Invoice Manger"
+        class="h-9 w-9 mr-1"
+      />
+      <span class="font-bold text-lg no-underline text-black">InvoiceManager</span>
+    </NuxtLink>
 
-    </nav>
-  </div>
+
+    <AppNav />
+
+    </div>
+  </aside>
 </template>
 <script lang="ts" setup></script>

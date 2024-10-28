@@ -1,9 +1,7 @@
 <template>
   <div>
-    <h1>Dashboard</h1>
+    <h1>Settings</h1>
     <Welcome></Welcome>
-    <!-- <InvoiceList></InvoiceList>
-    <NuxtWelcome /> -->
   </div>
 </template>
 <script lang="ts" setup></script>

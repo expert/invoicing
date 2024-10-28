@@ -53,6 +53,9 @@ export default {
     colors: {
       primary: {
         blue: '#116acc',
+        dark: '#182233',
+        light: '#f8faff',
+        highlight: '#e5ecff',
         DEFAULT: '#942192'
       },
     },
