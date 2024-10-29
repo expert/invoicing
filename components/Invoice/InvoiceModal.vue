@@ -44,8 +44,12 @@ const props = defineProps({
   invoiceId: {
     type: [String, Number],
     default: null
+  },
+  invoiceType: {
+    type: String
   }
 });
+
 const invoice = ref({
   id: 1,
   logo: "",
@@ -62,7 +66,6 @@ const invoice = ref({
   details: "Some details",
   discount: 5,
   total: 1000,
-  category: "bill",
   isPaid: false,
   createdAt: `${new Date()}`,
   createdBy: `${new Date()}`,
@@ -181,14 +184,14 @@ const fields: Ref<FieldType[]> = ref([
     name: "total"
   },
 
-  {
-    label: "Category",
-    component: "select",
-    required: true,
-    value: invoice.value.category,
-    name: "category",
-    options: ["bill", "payment"]
-  }
+  // {
+  //   label: "Category",
+  //   component: "select",
+  //   required: true,
+  //   value: invoice.value.category,
+  //   name: "category",
+  //   options: ["bill", "payment"]
+  // }
   // Add other fields dynamically as needed...
 ]);
 
@@ -234,6 +237,8 @@ const saveInvoice = (invoiceData: FormData) => {
     adapter['paidAt'] = `${new Date()}`
       // @ts-expect-error
     adapter['createdAt'] = `${new Date()}`
+      // @ts-expect-error
+    adapter['category'] = props.invoiceType
     invoiceStore.create(adapter)
   }
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <InvoiceDashboard :invoices="invoices.getPayments" />
+    <InvoiceDashboard :invoices="invoices.getPayments" invoice-type="payment" />
   </div>
 </template>
 

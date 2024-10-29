@@ -3,7 +3,7 @@
     <header
       class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4"
     >
-      <h1 class="text-2xl font-semibold">Invoices</h1>
+      <h1 class="text-2xl font-semibold">{{ invoiceType === 'bills' ? 'Invoices' : 'Payments'}}</h1>
       <button
         type="button"
         class="btn btn-outline-primary flex items-center gap-1"
@@ -25,6 +25,7 @@
     <!-- Modal Component -->
     <InvoiceModal
       v-if="showModal"
+      :invoice-type="props.invoiceType"
       @close="closeModal"
     />
   </section>
@@ -33,7 +34,8 @@
 <script lang="ts" setup>
 import type { InvoiceModel } from '~/src/models/invoice.model';
 const props = defineProps<{
-  invoices: InvoiceModel[]
+  invoices: InvoiceModel[],
+  invoiceType: 'bill' | 'payment'
 }>()
 
 

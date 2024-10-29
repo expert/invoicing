@@ -1,5 +1,5 @@
 <template>
-  <div class="summary-card sp-6 rounded-lg shadow bg-white flex gap-6 items-center">
+  <div class="overview-card sp-6 p-4 rounded-lg shadow bg-white flex gap-6 items-center">
     <div class="flex-1">
       <p class="text-sm font-semibold text-gray-600">
         <span :class="trendIconClass"></span>
@@ -48,8 +48,8 @@ const { formatCurrency } = useCurrencyFormatter()
 </script>
 
 <style scoped>
-.summary-card {
-  max-width: 400px;
+.overview-card {
+  /* max-width: 400px; */
   display: flex;
 }
 

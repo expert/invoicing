@@ -25,7 +25,7 @@ export default  defineEventHandler(async (params) => {
     .attr("details", () => query.details)
     .attr("discount", () => query.discount)
     .attr("total", () => query.total )
-    .attr("category", () => 'payment')
+    .attr("category", () => query.category)
     .attr("isPaid", () => query.isPaid)
     .attr("paidAt", () => query.paidAt)
     .attr("createdAt", () => query.createdAt)
@@ -35,6 +35,5 @@ export default  defineEventHandler(async (params) => {
   const newInvoice =  invoiceFactory.build()
   const invoices = await useStorage('test').getItem('invoices')
   useStorage('test').setItem('invoices', [newInvoice.id, ...invoices])
-  console.log(newInvoice.id, invoices)
   return newInvoice.id
 })

@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="p-4 md:p-6">
     <div class="flex justify-between">
       <h1>Dashboard</h1>
       <CurrencyFilter :show-title="false"></CurrencyFilter>
     </div>
     <h2>General overview</h2>
-    <div class="grid md:grid-cols-2">
+    <div class="grid md:grid-cols-2 gap-4">
      <InvoiceOverview 
         v-if="billsOverview"
         title="Total invoiced"

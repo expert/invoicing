@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>Invoices</h1>
+    <InvoiceDashboard :invoices="invoices.getBills" invoice-type="bill" />
   </div>
 </template>
-<script lang="ts" setup></script>
+
+<script lang="ts" setup>
+const invoices = useInvoiceStore()
+</script>
