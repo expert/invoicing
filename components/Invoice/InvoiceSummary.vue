@@ -92,8 +92,7 @@ watch(
   }
 );
 
-watch(
-  () => invoiceStore.invoiceList,
+watchEffect(
   () => {
     chartData = useInvoiceChartDataAdapter(
       props.invoices,
@@ -124,7 +123,7 @@ const invoiceOverview = ref(
       @native:mouseenter="showToolbox()"
       @globalout="hideToolbox()"
     />
-    <div class="h-32 md:h-40 bg-gray-100 my-4 rounded"></div>
+    <!-- <div class="h-32 md:h-40 bg-gray-100 my-4 rounded"></div> -->
     <div class="flex flex-col md:flex-row justify-between text-sm">
       <span
         >Total invoiced:

@@ -24,7 +24,7 @@
       <span>{{ formatDate(`${invoice.dueDate}`) }}</span>
       <span>{{ invoice.fromName }}</span>
       <span>{{ formatDate(`${invoice.paidAt}`) || '-' }}</span>
-      <span> {{  formatCurrency(invoice.total, invoice.currency) }} /// {{ invoice.total }} {{ invoice.currency }}</span>
+      <span> {{  formatCurrency(invoice.total, invoice.currency) }} </span>
       <span :class="invoice.isPaid ? 'text-green-500' : 'text-red-500'">
         {{  invoice.isPaid ? 'Paid' : 'Unpaid' }}
       </span>

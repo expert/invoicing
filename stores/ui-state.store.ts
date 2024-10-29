@@ -3,7 +3,8 @@ export const useUIStateStore = defineStore('uiState', {
     return {
       isSidebarOpened: true,
       currencies: ["MDL", "USD", "EUR", "RON"],
-      currentCurrency: 0
+      currentCurrency: 0,
+      isError: false
     }
   },
   actions: {
@@ -15,6 +16,9 @@ export const useUIStateStore = defineStore('uiState', {
     },
     setCurrency(currency: number): void {
       this.$state.currentCurrency = currency
+    },
+    setError(state: boolean): void {
+      this.$state.isError = state
     }
   },
   getters: {
@@ -23,6 +27,6 @@ export const useUIStateStore = defineStore('uiState', {
     },
     getCurrencyCode(): 'MDL' | 'USD' | 'EUR' | 'RON' {
       return this.currencies[this.currentCurrency] as  'MDL' | 'USD' | 'EUR' | 'RON'
-    }
+    },
   }
 })

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showModal" class="modal">
+  <div class="modal">
     <div
       class="modal-bg fixed inset-0 bg-black-[0.1] z-10"
       @click="closeModal"
@@ -28,6 +28,7 @@
 
 <script lang="ts" setup>
 import type { InvoiceModel, ServiceType } from "~/src/models/invoice.model";
+const emit = defineEmits(['close'])
 
 type FieldType = {
   label: string;
@@ -237,6 +238,6 @@ const saveInvoice = (invoiceData: FormData) => {
   }
 
   // Close modal after saving
-  // $emit("close");
+  emit("close");
 };
 </script>

@@ -41,6 +41,7 @@ const showModal = ref(false);
 const currentInvoiceId: Ref<number | null> = ref(null);
 
 const createInvoice = () => {
+  console.log('createInvoice', showModal.value)
   showModal.value = true;
 };
 
