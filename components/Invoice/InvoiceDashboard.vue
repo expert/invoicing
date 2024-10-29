@@ -3,7 +3,7 @@
     <header
       class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4"
     >
-      <h1 class="text-2xl font-semibold">{{ invoiceType === 'bills' ? 'Invoices' : 'Payments'}}</h1>
+      <h1 class="text-2xl font-semibold">{{ invoiceType === 'bill' ? 'Invoices' : 'Payments'}}</h1>
       <button
         type="button"
         class="btn btn-outline-primary flex items-center gap-1"
