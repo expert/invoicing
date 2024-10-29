@@ -43,7 +43,7 @@ const billsOverview = ref(useInvoiceOverview(invoiceStore.getBills, uiStateStore
 const paymentsOverview = ref(useInvoiceOverview(invoiceStore.getPayments, uiStateStore.getCurrencyCode))
 
 
-console.log('overviewInvoiced', billsOverview)
+// console.log('overviewInvoiced', billsOverview)
 watch(() => uiStateStore.getCurrencyCode, () => {
   billsOverview.value = useInvoiceOverview(invoiceStore.getBills, uiStateStore.getCurrencyCode)
   paymentsOverview.value = useInvoiceOverview(invoiceStore.getPayments, uiStateStore.getCurrencyCode)

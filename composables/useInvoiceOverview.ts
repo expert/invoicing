@@ -19,7 +19,7 @@ export function useInvoiceOverview(invoices: InvoiceModel[], targetCurrency: 'MD
 
   const overview = invoices.reduce(
     (result, current: InvoiceModel) => {
-      const total = convertCurrency(current.total, 0, targetCurrency); // Assuming original currency is MDL (index 0)
+      const total = convertCurrency(current.total, current.currency, targetCurrency); // Assuming original currency is MDL (index 0)
       const paid = current.isPaid ? total : 0;
       const unpaid = current.isPaid ? 0 : total;
 

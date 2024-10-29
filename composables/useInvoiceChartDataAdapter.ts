@@ -1,27 +1,29 @@
-import { ref, computed } from 'vue';
 import type { InvoiceModel } from '~/src/models/invoice.model';
 
-export function useInvoiceChartDataAdapter(invoices: InvoiceModel[]) {
+export function useInvoiceChartDataAdapter(invoices: InvoiceModel[], targetCurrency: 'MDL' | 'USD' | 'EUR' | 'RON') {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-  const paidData = ref(new Array(12).fill(0));   // Initialize 12 months with 0 count
-  const unpaidData = ref(new Array(12).fill(0)); // Initialize 12 months with 0 count
+  const paidData: number[] = new Array(12).fill(0);   // Initialize 12 months with 0 count
+  const unpaidData: number[] = new Array(12).fill(0); // Initialize 12 months with 0 count
+  const { convertCurrency } = useCurrencyConverter();
 
   invoices.forEach(invoice => {
     const date = new Date(invoice.paidAt);
     const monthIndex = date.getUTCMonth(); // Get month (0-11)
 
+    const total = convertCurrency(invoice.total, invoice.currency, targetCurrency)
+
     if (invoice.isPaid) {
-      paidData.value[monthIndex] += invoice.total;
+      paidData[monthIndex] += total;
     } else {
-      unpaidData.value[monthIndex] += invoice.total;
+      unpaidData[monthIndex] += total;
     }
   });
 
   // Return computed values in a structure suitable for charting
-  return computed(() => ({
+  return {
     months,
-    paidData: paidData.value,
-    unpaidData: unpaidData.value
-  }));
+    paidData: paidData,
+    unpaidData: unpaidData
+  };
 }

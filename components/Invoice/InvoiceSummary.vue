@@ -1,79 +1,151 @@
 <script setup lang="ts">
-import type { InvoiceModel } from '~/src/models/invoice.model';
+import type { VChart } from "#build/components";
+import type { InvoiceModel } from "~/src/models/invoice.model";
 
 const props = defineProps<{
-  invoices: InvoiceModel[]
-}>()
+  invoices: InvoiceModel[];
+}>();
 
-const chartData = useInvoiceChartDataAdapter(props.invoices).value
+const chart = ref<InstanceType<typeof VChart> | null>(null);
+const uiStateStore = useUIStateStore();
+let chartData = useInvoiceChartDataAdapter(
+  props.invoices,
+  uiStateStore.getCurrencyCode
+);
 
-
-const chartOptions = ref({
-  tooltip: {
-    trigger: 'axis',
-    axisPointer: { type: 'shadow' }
-  },
-  legend: {
-    data: ['Paid', 'Unpaid'],
-    right: 10,
-    bottom: 10,
-  },
-  xAxis: {
-    type: 'category',
-    data: chartData.months,
-    axisLabel: {
-      color: '#333',
-      fontSize: 12,
-    }
-  },
-  yAxis: {
-    type: 'value',
-    axisLabel: {
-      color: '#333',
-      fontSize: 12,
-      formatter: '{value}',
+function getData(): ECOption {
+  return {
+    // update
+    tooltip: {
+      trigger: "axis",
+      axisPointer: { type: "shadow" }
     },
-    splitLine: {
-      lineStyle: {
-        type: 'dashed',
-        color: '#ccc'
-      }
-    }
-  },
-  series: [
-    {
-      name: 'Paid',
-      type: 'bar',
-      data: chartData.paidData,
-      barWidth: '30%',
-      itemStyle: {
-        color: '#4C6EF5'
+    legend: {
+      data: ["Paid", "Unpaid"],
+      right: 10,
+      bottom: 10
+    },
+    xAxis: {
+      type: "category",
+      data: chartData.months,
+      axisLabel: {
+        color: "#333",
+        fontSize: 12
       }
     },
-    {
-      name: 'Unpaid',
-      type: 'bar',
-      data: chartData.unpaidData,
-      barWidth: '30%',
-      itemStyle: {
-        color: '#333'
+    yAxis: {
+      type: "value",
+      axisLabel: {
+        color: "#333",
+        fontSize: 12,
+        formatter: "{value}"
+      },
+      splitLine: {
+        lineStyle: {
+          type: "dashed",
+          color: "#ccc"
+        }
       }
-    }
-  ]
-})
+    },
+    series: [
+      {
+        name: "Paid",
+        type: "bar",
+        data: chartData.paidData,
+        barWidth: "30%",
+        itemStyle: {
+          color: "#4C6EF5"
+        }
+      },
+      {
+        name: "Unpaid",
+        type: "bar",
+        data: chartData.unpaidData,
+        barWidth: "30%",
+        itemStyle: {
+          color: "#333"
+        }
+      }
+    ]
+  };
+}
+function hideToolbox() {
+  chart.value?.setOption({ toolbox: { show: false } });
+}
+function showToolbox() {
+  chart.value?.setOption({ toolbox: { show: true } });
+}
+const chartOptions = shallowRef(getData());
+watch(
+  () => uiStateStore.getCurrencyCode,
+  () => {
+    chartData = useInvoiceChartDataAdapter(
+      props.invoices,
+      uiStateStore.getCurrencyCode
+    );
+    chartOptions.value = getData();
+    chart.value?.setOption(chartOptions.value, {
+      notMerge: true
+    });
+  }
+);
+
+const { formatCurrency } = useCurrencyFormatter();
+
+const invoiceOverview = ref(
+  useInvoiceOverview(props.invoices, uiStateStore.getCurrencyCode)
+);
 </script>
 
 <template>
   <div class="border border-gray-300 rounded p-4 mt-4">
     <h2 class="font-semibold text-lg md:text-xl">Monthly Invoice Overview</h2>
-    <ChartBar :options="chartOptions" ></ChartBar>
-    
+    <!-- <ChartBar ref="chart" :options="chartOptions" :update-opotion=""></ChartBar> -->
+    <VChart
+      ref="chart"
+      class="h-[300px]"
+      :option="chartOptions"
+      @native:mouseenter="showToolbox()"
+      @globalout="hideToolbox()"
+    />
     <div class="h-32 md:h-40 bg-gray-100 my-4 rounded"></div>
     <div class="flex flex-col md:flex-row justify-between text-sm">
-      <span>Total invoiced: <span class="text-green-600 font-semibold">€ 8,849.74</span></span>
+      <span
+        >Total invoiced:
+        <span
+          v-if="invoiceOverview?.totalValue"
+          class="text-green-600 font-semibold"
+          >{{
+            formatCurrency(
+              invoiceOverview.totalValue,
+              uiStateStore.currentCurrency
+            )
+          }}</span
+        ></span
+      >
       <div class="mt-2 md:mt-0">
-        <span class="text-green-500 font-semibold">Paid € 324.27</span>
-        <span class="text-red-500 font-semibold ml-4">Unpaid € 5,525.47</span>
+        <span
+          v-if="invoiceOverview?.paidAmount"
+          class="text-green-500 font-semibold"
+          >Paid
+          {{
+            formatCurrency(
+              invoiceOverview.paidAmount,
+              uiStateStore.currentCurrency
+            )
+          }}</span
+        >
+        <span
+          v-if="invoiceOverview?.unpaidAmount"
+          class="text-red-500 font-semibold ml-4"
+          >Unpaid
+          {{
+            formatCurrency(
+              invoiceOverview.unpaidAmount,
+              uiStateStore.currentCurrency
+            )
+          }}</span
+        >
       </div>
     </div>
   </div>

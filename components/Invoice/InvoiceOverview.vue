@@ -53,19 +53,4 @@ const { formatCurrency } = useCurrencyFormatter()
   display: flex;
 }
 
-.icon-paid::before {
-  content: '💰'; /* Replace with actual icon if using Icon library */
-}
-
-.icon-unpaid::before {
-  content: '💸'; /* Replace with actual icon if using Icon library */
-}
-
-.icon-trend-up::before {
-  content: '📈'; /* Replace with actual icon if using Icon library */
-}
-
-.icon-trend-down::before {
-  content: '📉'; /* Replace with actual icon if using Icon library */
-}
 </style>
