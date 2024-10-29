@@ -17,8 +17,6 @@ export const useInvoiceStore = defineStore('invoice', {
       const { data, status, error, refresh, clear } = await useFetch('/api/payments', {
         onRequest({ request, options }) {
           // Set the request headers
-          // note that this relies on ofetch >= 1.4.0 - you may need to refresh your lockfile
-          options.headers.set('Authorization', '...')
         },
         onRequestError({ request, options, error }) {
           // Handle the request errors
@@ -26,7 +24,6 @@ export const useInvoiceStore = defineStore('invoice', {
         },
         onResponse({ request, response, options }) {
           // Process the response data
-          // localStorage.setItem('token', response._data.token)
         },
         onResponseError({ request, response, options }) {
           // Handle the response errors
@@ -40,6 +37,19 @@ export const useInvoiceStore = defineStore('invoice', {
       this.populateInvoiceData(data)
       return true
     },
+    async create(invoiceData): Promise<boolean> {
+      const { data, status, error, refresh, clear } = await $fetch('/api/payments', {
+        method: 'post',
+        body: invoiceData
+      })
+      if (error.value) {
+        console.error("Failed to create invoice", error)
+        return false
+      }
+
+      this.addInvoice(data)
+      return true
+    },
     populateInvoiceData(data: Ref): void {
       // Ensure data is available and is an array
       if (Array.isArray(data.value)) {
@@ -48,6 +58,13 @@ export const useInvoiceStore = defineStore('invoice', {
         }
       } else {
         console.error("Failed to populate invoices, no invoices")
+      }
+    },
+    addInvoice(data: Ref): void {
+      if (data.value) {
+        this.invoiceList = [data.value, ...this.invoiceList]
+      } else {
+        console.error("Failed to add invoice")
       }
     }
   },

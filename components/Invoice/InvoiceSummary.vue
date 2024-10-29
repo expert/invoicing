@@ -7,7 +7,9 @@ const props = defineProps<{
 }>();
 
 const chart = ref<InstanceType<typeof VChart> | null>(null);
-const uiStateStore = useUIStateStore();
+const uiStateStore = useUIStateStore()
+const invoiceStore = useInvoiceStore()
+
 let chartData = useInvoiceChartDataAdapter(
   props.invoices,
   uiStateStore.getCurrencyCode
@@ -78,6 +80,20 @@ function showToolbox() {
 const chartOptions = shallowRef(getData());
 watch(
   () => uiStateStore.getCurrencyCode,
+  () => {
+    chartData = useInvoiceChartDataAdapter(
+      props.invoices,
+      uiStateStore.getCurrencyCode
+    );
+    chartOptions.value = getData();
+    chart.value?.setOption(chartOptions.value, {
+      notMerge: true
+    });
+  }
+);
+
+watch(
+  () => invoiceStore.invoiceList,
   () => {
     chartData = useInvoiceChartDataAdapter(
       props.invoices,
