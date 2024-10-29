@@ -1,6 +1,6 @@
 import { invoiceFactory } from "~/src/factories/invoiceFactory"
 export default defineNitroPlugin(async (nitroApp) => {
-  console.log('Nitro plugin', nitroApp)
+  // console.log('Nitro plugin', nitroApp)
   // const invoiceFactory = Factory
   //   .define('invoice', InvoiceModel)
   //   .attr('total', 50)

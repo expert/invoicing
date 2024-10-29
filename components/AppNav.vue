@@ -5,6 +5,7 @@
       :key="index" 
       :to="item.link"
       class="p-4 text-primary-blue no-underline flex items-center hover:bg-primary-highlight ![&.router-link-active]:bg-primary-blue [&.router-link-active]:text-white rounded-[5px_0_0_5px]"
+      @click="closeSidebar"
       >
       <span class="w-6 h-6 block mr-2" :class="item.icon"></span>
       {{ item.text }}
@@ -35,4 +36,8 @@ const navItems = [
     icon: 'i-ic-outline-settings'
   },
 ]
+const uiStateStore = useUIStateStore();
+const closeSidebar = () => {
+  uiStateStore.closeSidebar()
+}
 </script>

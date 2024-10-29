@@ -22,6 +22,15 @@
   </aside>
 </template>
 <script lang="ts" setup>
-const stateStore = useUIStateStore();
-const isSidebarOpened = computed(() => stateStore.getSidebarState);
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+const uiStateStore = useUIStateStore();
+const isSidebarOpened = computed(() => uiStateStore.getSidebarState);
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+
+const smallerThanLg = breakpoints.smaller('lg') // only smaller than lg
+if (smallerThanLg) {
+  uiStateStore.closeSidebar()
+}
+
 </script>

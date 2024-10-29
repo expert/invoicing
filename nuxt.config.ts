@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@pinia/nuxt',
     'nuxt-echarts',
+    '@vueuse/nuxt',
   ],
   nitro: {
     storage: {
