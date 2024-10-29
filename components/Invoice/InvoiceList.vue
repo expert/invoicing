@@ -1,6 +1,6 @@
 <template>
    <!-- Invoice List Section -->
-   <div class="border rounded-md overflow-hidden shadow">
+   <div class="border rounded-md overflow-hidden shadow min-w-[700px] overflow-x-auto">
     <!-- Invoice List Header -->
     <div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_100px] bg-gray-200 p-3 font-semibold">
       <span>Invoice #</span>

@@ -1,5 +1,5 @@
 <template>
-  <div class="overview-card sp-6 p-4 rounded-lg shadow bg-white flex gap-6 items-center">
+  <div class="overview-card flex-wrap h-auto p-4 rounded-lg shadow bg-white flex gap-6 items-center">
     <div class="flex-1">
       <p class="text-sm font-semibold text-gray-600">
         <span :class="trendIconClass"></span>
@@ -10,7 +10,7 @@
         Average Payment Date: <span class="text-blue-500">{{ averagePaymentDate }} days</span>
       </p>
     </div>
-    <div class="w-px bg-gray-200 h-full"></div>
+    <div class="w-px bg-gray-200 h-full hidden lg:block"></div>
     <div class="flex-1">
       <div class="flex items-center gap-2 mb-1">
         <i class="i-ic-baseline-account-balance-wallet w-4.5 h-4.5 text-state-success block"></i>

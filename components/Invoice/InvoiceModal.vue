@@ -2,10 +2,11 @@
   <div class="modal">
     <div
       class="modal-bg fixed inset-0 bg-black-[0.1] z-10"
+      type="button"
       @click="closeModal"
     ></div>
     <div
-      class="modal-content absolute inset-72 z-20 bg-white rounded-md border-gray-300 p4 overflow-y-auto"
+      class="modal-content absolute inset-10 lg:inset-72 z-20 bg-white rounded-md border-gray-300 p4 overflow-y-auto"
     >
       <button class="rounded absolute right-0 top-0 p4" @click="closeModal">
         <span class="i-ic-close block h-4 w-4"></span>
@@ -205,6 +206,8 @@ const handleSubmit = (formValues) => {
 
 const closeModal = () => {
   showModal.value = false;
+  console.log('clo', showModal.value)
+  emit("close");
 };
 
 // If editing, fetch the invoice details

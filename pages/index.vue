@@ -1,10 +1,10 @@
 <template>
   <div class="p-4 md:p-6">
-    <div class="flex justify-between">
+    <div class="flex justify-between items-center">
       <h1>Dashboard</h1>
       <CurrencyFilter :show-title="false"></CurrencyFilter>
     </div>
-    <h2>General overview</h2>
+    <h2 class="mt-5">General overview</h2>
     <div class="grid md:grid-cols-2 gap-4">
      <InvoiceOverview 
         v-if="billsOverview"
