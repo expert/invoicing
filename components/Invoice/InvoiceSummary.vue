@@ -78,6 +78,11 @@ function showToolbox() {
   chart.value?.setOption({ toolbox: { show: true } });
 }
 const chartOptions = shallowRef(getData());
+
+const invoiceOverview = ref(
+  useInvoiceOverview(props.invoices, uiStateStore.getCurrencyCode)
+);
+
 watch(
   () => uiStateStore.getCurrencyCode,
   () => {
@@ -89,6 +94,7 @@ watch(
     chart.value?.setOption(chartOptions.value, {
       notMerge: true
     });
+    invoiceOverview.value = useInvoiceOverview(props.invoices, uiStateStore.getCurrencyCode)
   }
 );
 
@@ -102,14 +108,12 @@ watchEffect(
     chart.value?.setOption(chartOptions.value, {
       notMerge: true
     });
+    invoiceOverview.value = useInvoiceOverview(props.invoices, uiStateStore.getCurrencyCode)
   }
 );
 
 const { formatCurrency } = useCurrencyFormatter();
 
-const invoiceOverview = ref(
-  useInvoiceOverview(props.invoices, uiStateStore.getCurrencyCode)
-);
 </script>
 
 <template>
