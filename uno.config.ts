@@ -39,7 +39,7 @@ export default {
 
   shortcuts: {
     'btn': 'px-4 py-2 rounded border bg-transparent border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-150',
-    'btn-icon': 'flex items-center gap-1 text-blue-500 hover:text-blue-700 cursor-pointer',
+    'btn-icon': 'flex items-center gap-1 text-blue-500 hover:text-white cursor-pointer',
     'form-select': 'border rounded p-2 w-full',
     'form-input': 'border rounded p-2 w-full',
     'text-lg': 'text-base md:text-lg',
